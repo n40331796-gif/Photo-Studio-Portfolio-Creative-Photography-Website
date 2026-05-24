@@ -48,18 +48,17 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTIONS (SCROLL ANIMATION) */
+/* SECTIONS */
 section{
     min-height:100vh;
-    padding:100px 20px;
+    padding:60px 20px;
     box-sizing:border-box;
-
     opacity:0;
     transform:translateY(40px);
     transition:all 0.8s ease;
 }
 
-/* عندما يظهر القسم */
+/* SECTION SHOW */
 section.show{
     opacity:1;
     transform:translateY(0);
@@ -73,7 +72,7 @@ section.show{
     border-radius:10px;
 }
 
-/* SERVICES TEXT */
+/* SERVICES */
 .services-text{
     display:flex;
     justify-content:center;
@@ -121,7 +120,8 @@ form{
     margin:auto;
 }
 
-input,textarea{
+input,
+textarea{
     margin:10px 0;
     padding:10px;
     border:none;
@@ -142,6 +142,8 @@ button:hover{
     background:#ff9800;
     transform:scale(1.05);
 }
+
+/* MOBILE */
 @media (max-width:768px){
 
     nav{
@@ -150,12 +152,12 @@ button:hover{
 
     nav a{
         display:block;
-        margin:10px 0;
+        margin:8px 0;
         font-size:16px;
     }
 
     section{
-        padding:60px 15px;
+        padding:25px 15px;
         min-height:auto;
     }
 
@@ -174,7 +176,7 @@ button:hover{
     .services-text{
         flex-direction:column;
         align-items:center;
-        gap:15px;
+        gap:10px;
     }
 
     .gallery{
