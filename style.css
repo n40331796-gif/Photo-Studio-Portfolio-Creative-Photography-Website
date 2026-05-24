@@ -48,16 +48,19 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTION (FIX SCROLL OVERLAP ISSUE) */
+/* 🔥 FIX FINAL SCROLL OFFSET PROBLEM */
+html{
+    scroll-padding-top:110px;
+}
+
 section{
     min-height:auto;
     padding:60px 20px;
     box-sizing:border-box;
 
-    /* 🔥 الحل الحقيقي للمشكلة */
-    scroll-margin-top:100px;
+    /* مهم جدًا */
+    scroll-margin-top:110px;
 
-    /* تثبيت العرض بدون أخطاء */
     opacity:1;
     transform:none;
 }
@@ -118,8 +121,7 @@ form{
     margin:auto;
 }
 
-input,
-textarea{
+input,textarea{
     margin:10px 0;
     padding:10px;
     border:none;
@@ -156,7 +158,7 @@ button:hover{
 
     section{
         padding:30px 15px;
-        scroll-margin-top:90px;
+        scroll-margin-top:100px;
     }
 
     .hero{
