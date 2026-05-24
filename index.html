@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Photo Studio Pro</title>
-
 <link rel="stylesheet" href="style.css">
 
 <style>
 html{
     scroll-behavior:smooth;
-    scroll-padding-top:110px;
+    scroll-padding-top:80px;
 }
 </style>
 </head>
@@ -31,6 +31,7 @@ html{
 
 <!-- HOME -->
 <section id="home">
+
     <div class="hero">
         <h2 class="hero-title">We Create Visual Stories</h2>
         <p class="hero-text">
@@ -41,23 +42,25 @@ html{
 
     <div class="services">
         <h2 style="text-align:center;">Our Services</h2>
+
         <div class="services-text">
             <span>Portrait Photography</span>
             <span>Wedding Photography</span>
             <span>Product Photography</span>
         </div>
     </div>
+
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT + TESTIMONIALS -->
 <section id="about" style="padding:80px 20px; text-align:center; background:#111;">
 
     <h2>About Us</h2>
 
     <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
-        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
-        Our team works with different types of photography including weddings, portraits, and commercial projects.
-        We focus on turning simple moments into powerful visual stories that last forever.
+        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.  
+        Our team works with different types of photography including weddings, portraits, and commercial projects.  
+        We focus on turning simple moments into powerful visual stories that last forever.  
         Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results for our clients.
     </p>
 
@@ -77,17 +80,21 @@ html{
 
 <!-- GALLERY -->
 <section id="gallery">
+
     <h2 style="text-align:center;">Gallery</h2>
+
     <div class="gallery">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
         <img src="images/img3.jpg">
         <img src="images/img4.jpg">
     </div>
+
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
+
     <h2 style="text-align:center;">Contact Us</h2>
 
     <form>
@@ -102,6 +109,7 @@ html{
 
         <button type="submit">Send</button>
     </form>
+
 </section>
 
 <footer>
@@ -112,6 +120,24 @@ html{
 function showMessage(){
     alert("Booking request sent successfully!");
 }
+
+/* SCROLL REVEAL */
+const sections = document.querySelectorAll("section");
+
+function showSections(){
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(sec => {
+        const sectionTop = sec.getBoundingClientRect().top;
+
+        if(sectionTop < triggerBottom){
+            sec.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", showSections);
+window.addEventListener("load", showSections);
 </script>
 
 </body>
