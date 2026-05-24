@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <title>Photo Studio Pro</title>
@@ -31,7 +30,6 @@ html{
 
 <!-- HOME -->
 <section id="home">
-
     <div class="hero">
         <h2 class="hero-title">We Create Visual Stories</h2>
         <p class="hero-text">
@@ -42,25 +40,22 @@ html{
 
     <div class="services">
         <h2 style="text-align:center;">Our Services</h2>
-
         <div class="services-text">
             <span>Portrait Photography</span>
             <span>Wedding Photography</span>
             <span>Product Photography</span>
         </div>
     </div>
-
 </section>
 
-<!-- ABOUT + TESTIMONIALS -->
+<!-- ABOUT -->
 <section id="about" style="padding:80px 20px; text-align:center; background:#111;">
-
     <h2>About Us</h2>
 
     <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
-        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.  
-        Our team works with different types of photography including weddings, portraits, and commercial projects.  
-        We focus on turning simple moments into powerful visual stories that last forever.  
+        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
+        Our team works with different types of photography including weddings, portraits, and commercial projects.
+        We focus on turning simple moments into powerful visual stories that last forever.
         Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results for our clients.
     </p>
 
@@ -75,41 +70,36 @@ html{
     <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:15px;">
         "The best studio I have worked with. Excellent quality and service." – Ahmed
     </p>
-
 </section>
 
 <!-- GALLERY -->
 <section id="gallery">
-
     <h2 style="text-align:center;">Gallery</h2>
-
     <div class="gallery">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
         <img src="images/img3.jpg">
         <img src="images/img4.jpg">
     </div>
-
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (CRUD SYSTEM) -->
 <section id="contact">
+    <h2 style="text-align:center;">Contact Us (CRUD System)</h2>
 
-    <h2 style="text-align:center;">Contact Us</h2>
+    <div class="container">
 
-    <form>
-        <label>Name:</label>
-        <input type="text" required minlength="3">
+        <form id="crudForm">
+            <input type="text" id="name" placeholder="Enter name" required>
+            <input type="email" id="email" placeholder="Enter email" required>
+            <button type="submit" id="submitBtn" class="add-btn">➕ Add</button>
+        </form>
 
-        <label>Email:</label>
-        <input type="email" required>
+        <input type="text" id="search" placeholder="🔍 Search by name or email">
 
-        <label>Message:</label>
-        <textarea required></textarea>
+        <ul id="userList"></ul>
 
-        <button type="submit">Send</button>
-    </form>
-
+    </div>
 </section>
 
 <footer>
@@ -139,6 +129,9 @@ function showSections(){
 window.addEventListener("scroll", showSections);
 window.addEventListener("load", showSections);
 </script>
+
+<!-- 🔥 مهم: ربط ملف المحاضرة -->
+<script src="script.js"></script>
 
 </body>
 </html>
