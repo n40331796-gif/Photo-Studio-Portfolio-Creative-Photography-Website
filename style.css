@@ -24,6 +24,15 @@ nav a{
 }
 
 section{
-    padding:50px;
+    padding:40px;
     border-bottom:1px solid #444;
+}
+
+#users input, #users button{
+    padding:8px;
+    margin:5px;
+}
+
+li{
+    margin:10px 0;
 }
