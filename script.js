@@ -1,116 +1,47 @@
-let users = JSON.parse(localStorage.getItem('users')) || [];
+// ====== OBJECT EXAMPLE ======
+const studio = {
+  name: "Photo Studio Pro",
+  services: ["Wedding", "Portrait", "Product"],
+  location: "Libya",
+  showInfo: function () {
+    console.log(Studio: ${this.name});
+  }
+};
 
-let editIndex = null;
+studio.showInfo();
 
-const form = document.getElementById('crudForm');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const searchInput = document.getElementById('search');
-const userList = document.getElementById('userList');
-const submitBtn = document.getElementById('submitBtn');
 
-renderUsers();
+// ====== DOM MANIPULATION ======
+const title = document.querySelector(".logo");
 
-/* ADD OR UPDATE USER */
-form.addEventListener('submit', function(e){
-
-    e.preventDefault();
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-
-    if(!name || !email){
-        return;
-    }
-
-    const user = {
-        name: name,
-        email: email
-    };
-
-    if(editIndex === null){
-
-        users.push(user);
-
-    }else{
-
-        users[editIndex] = user;
-
-        editIndex = null;
-
-        submitBtn.textContent = "Add";
-    }
-
-    nameInput.value = "";
-    emailInput.value = "";
-
-    saveUsers();
-
-    renderUsers();
-
+title.addEventListener("click", function () {
+  this.style.color = "orange";
+  this.innerHTML = "✨ Clicked Studio ✨";
 });
 
-/* SEARCH */
-searchInput.addEventListener('input', renderUsers);
 
-/* RENDER USERS */
-function renderUsers(){
+// ====== NESTED OBJECT ======
+const client = {
+  name: "Ahmed",
+  contact: {
+    email: "ahmed@gmail.com",
+    phone: "123456"
+  }
+};
 
-    const filter = searchInput.value.toLowerCase();
+console.log(client.contact.email);
 
-    userList.innerHTML = "";
 
-    users.forEach((user, index) => {
+// ====== LOCAL STORAGE ======
+localStorage.setItem("studioName", "Photo Studio Pro");
 
-        if(
-            !user.name.toLowerCase().includes(filter) &&
-            !user.email.toLowerCase().includes(filter)
-        ){
-            return;
-        }
+const savedName = localStorage.getItem("studioName");
+console.log("Saved:", savedName);
 
-        const li = document.createElement('li');
 
-        li.innerHTML = 
-            <strong>${user.name}</strong><br>
-            ${user.email}
-            <br><br>
-            <button onclick="editUser(${index})">Edit</button>
-            <button onclick="deleteUser(${index})">Delete</button>
-        ;
+// ====== innerHTML EXAMPLE ======
+const heroText = document.querySelector(".hero-text");
 
-        userList.appendChild(li);
-
-    });
-
-}
-
-/* EDIT USER */
-function editUser(index){
-
-    nameInput.value = users[index].name;
-    emailInput.value = users[index].email;
-
-    editIndex = index;
-
-    submitBtn.textContent = "Update";
-
-}
-
-/* DELETE USER */
-function deleteUser(index){
-
-    users.splice(index, 1);
-
-    saveUsers();
-
-    renderUsers();
-
-}
-
-/* SAVE */
-function saveUsers(){
-
-    localStorage.setItem('users', JSON.stringify(users));
-
+if (heroText) {
+  heroText.innerHTML += "<br><strong>Now powered with JavaScript 🚀</strong>";
 }
