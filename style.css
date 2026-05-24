@@ -48,14 +48,15 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTIONS */
+/* 🔴 IMPORTANT FIX (this was causing big spaces) */
 section{
-    min-height:100vh;
+    min-height:auto;   /* بدل 100vh */
     padding:60px 20px;
     box-sizing:border-box;
     opacity:0;
     transform:translateY(40px);
     transition:all 0.8s ease;
+    scroll-margin-top:80px;
 }
 
 /* SECTION SHOW */
