@@ -1,8 +1,13 @@
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     font-family:Arial;
     background:#111;
     color:white;
+    overflow-x:hidden;
 }
 
 /* HEADER */
@@ -48,19 +53,12 @@ nav a:hover{
     background:#333;
 }
 
-/* 🔥 FIX FINAL SCROLL OFFSET PROBLEM */
-html{
-    scroll-padding-top:110px;
-}
-
+/* SECTIONS */
 section{
     min-height:auto;
     padding:60px 20px;
     box-sizing:border-box;
-
-    /* مهم جدًا */
     scroll-margin-top:110px;
-
     opacity:1;
     transform:none;
 }
@@ -90,6 +88,19 @@ section{
 
 .services-text span:hover{
     color:orange;
+}
+
+/* ABOUT FIX (IMPORTANT FOR LAPTOP + MOBILE) */
+#about{
+    padding:80px 20px;
+    text-align:center;
+    background:#111;
+}
+
+#about p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
 }
 
 /* GALLERY */
@@ -158,7 +169,6 @@ button:hover{
 
     section{
         padding:30px 15px;
-        scroll-margin-top:100px;
     }
 
     .hero{
