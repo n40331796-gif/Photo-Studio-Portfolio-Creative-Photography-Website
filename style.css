@@ -48,12 +48,16 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTION (FIXED COMPLETELY) */
+/* SECTION (IMPORTANT FIX FINAL) */
 section{
-    min-height:auto;   /* مهم جدًا لإلغاء الفراغات */
+    min-height:auto;   /* إزالة الفراغات الكبيرة */
     padding:50px 20px;
     box-sizing:border-box;
     scroll-margin-top:80px;
+
+    /* مهم: إزالة أي مشاكل ظهور/اختفاء */
+    opacity:1;
+    transform:none;
 }
 
 /* HERO */
@@ -135,7 +139,7 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* MOBILE FIX FINAL */
+/* MOBILE FIX */
 @media (max-width:768px){
 
     nav{
