@@ -6,66 +6,66 @@ const emailInput = document.getElementById("email");
 const searchInput = document.getElementById("search");
 const userList = document.getElementById("userList");
 
-function addUser() {
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+function addUser(){
 
-    if (name === "" || email === "") return;
+    let name = nameInput.value;
+    let email = emailInput.value;
 
-    const user = { name, email };
+    if(name === "" || email === "") return;
 
-    if (editIndex === null) {
-        users.push(user);
+    if(editIndex === null){
+        users.push({name,email});
     } else {
-        users[editIndex] = user;
+        users[editIndex] = {name,email};
         editIndex = null;
     }
 
     nameInput.value = "";
     emailInput.value = "";
 
-    saveData();
-    renderUsers();
+    save();
+    render();
 }
 
-function renderUsers() {
-    const filter = searchInput.value.toLowerCase();
+function render(){
+
     userList.innerHTML = "";
 
-    users.forEach((user, index) => {
-        if (
-            !user.name.toLowerCase().includes(filter) &&
-            !user.email.toLowerCase().includes(filter)
-        ) return;
+    let filter = searchInput.value.toLowerCase();
 
-        const li = document.createElement("li");
+    users.forEach((u,i)=>{
+
+        if(!u.name.toLowerCase().includes(filter) &&
+           !u.email.toLowerCase().includes(filter)) return;
+
+        let li = document.createElement("li");
 
         li.innerHTML = 
-            <span><strong>${user.name}</strong><br>${user.email}</span>
-            <button onclick="editUser(${index})">Edit</button>
-            <button onclick="deleteUser(${index})">Delete</button>
+            ${u.name} - ${u.email}
+            <button onclick="editUser(${i})">Edit</button>
+            <button onclick="deleteUser(${i})">Delete</button>
         ;
 
         userList.appendChild(li);
     });
 }
 
-function editUser(index) {
-    nameInput.value = users[index].name;
-    emailInput.value = users[index].email;
-    editIndex = index;
+function editUser(i){
+    nameInput.value = users[i].name;
+    emailInput.value = users[i].email;
+    editIndex = i;
 }
 
-function deleteUser(index) {
-    users.splice(index, 1);
-    saveData();
-    renderUsers();
+function deleteUser(i){
+    users.splice(i,1);
+    save();
+    render();
 }
 
-function saveData() {
+function save(){
     localStorage.setItem("users", JSON.stringify(users));
 }
 
-searchInput.addEventListener("input", renderUsers);
+searchInput.addEventListener("input", render);
 
-renderUsers();
+render();
