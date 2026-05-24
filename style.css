@@ -48,21 +48,12 @@ nav a:hover{
     background:#333;
 }
 
-/* 🔴 IMPORTANT FIX (this was causing big spaces) */
+/* SECTION (FIXED COMPLETELY) */
 section{
-    min-height:auto;   /* بدل 100vh */
-    padding:60px 20px;
+    min-height:auto;   /* مهم جدًا لإلغاء الفراغات */
+    padding:50px 20px;
     box-sizing:border-box;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s ease;
     scroll-margin-top:80px;
-}
-
-/* SECTION SHOW */
-section.show{
-    opacity:1;
-    transform:translateY(0);
 }
 
 /* HERO */
@@ -144,7 +135,7 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* MOBILE */
+/* MOBILE FIX FINAL */
 @media (max-width:768px){
 
     nav{
@@ -159,7 +150,6 @@ button:hover{
 
     section{
         padding:25px 15px;
-        min-height:auto;
     }
 
     .hero{
