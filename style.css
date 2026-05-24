@@ -52,14 +52,14 @@ nav a:hover{
     background:#333;
 }
 
-/* 🔥 الحل الحقيقي فقط */
+/* 🔥 الحل الحقيقي لمشكلة الانتقال بين الأقسام */
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:100px;
 }
 
-/* هذا هو FIX الصحيح بدون تخريب */
 section{
-    scroll-margin-top:90px;
+    scroll-margin-top:100px;
     padding:60px 20px;
 }
 
@@ -98,8 +98,14 @@ section{
     height:160px;
     object-fit:cover;
     border-radius:10px;
+    transition:0.3s;
 }
 
+.gallery img:hover{
+    transform:scale(1.1);
+}
+
+/* FORM */
 form{
     display:flex;
     flex-direction:column;
@@ -110,17 +116,37 @@ form{
 input,textarea{
     margin:10px 0;
     padding:10px;
+    border:none;
+    border-radius:5px;
 }
 
+/* BUTTON */
 button{
     background:orange;
     padding:10px;
     border:none;
     cursor:pointer;
+    border-radius:5px;
 }
 
 button:hover{
     background:#ff9800;
+}
+
+/* ABOUT FIX (CENTER ONLY) */
+#about{
+    text-align:center;
+}
+
+#about h2,
+#about h3{
+    text-align:center;
+}
+
+#about p{
+    max-width:900px;
+    margin:20px auto;
+    line-height:1.8;
 }
 
 /* MOBILE */
