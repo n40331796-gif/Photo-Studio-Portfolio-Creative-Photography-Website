@@ -1,144 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+const form = document.getElementById("contactForm");
+const messagesList = document.getElementById("messagesList");
 
-<head>
-<meta charset="UTF-8">
-<title>Photo Studio Pro</title>
-<link rel="stylesheet" href="style.css">
+renderMessages();
 
-<style>
-html{
-    scroll-behavior:smooth;
-    scroll-padding-top:80px;
-}
-</style>
-</head>
+/* SUBMIT FORM */
+form.addEventListener("submit", function(e){
 
-<body>
+    e.preventDefault();
 
-<header class="header">
-    <img src="images/logo.png" class="logo-img">
-    <h1 class="logo">Photo Studio Pro</h1>
-    <p class="tagline">Capturing Moments with Creativity</p>
-</header>
+    const name = form.querySelector("input[type='text']").value.trim();
+    const email = form.querySelector("input[type='email']").value.trim();
+    const message = form.querySelector("textarea").value.trim();
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Portfolio</a>
-    <a href="#contact">Contact</a>
-</nav>
+    if(!name  !email  !message) return;
 
-<!-- HOME -->
-<section id="home">
+    const msg = {
+        name: name,
+        email: email,
+        message: message
+    };
 
-    <div class="hero">
-        <h2 class="hero-title">We Create Visual Stories</h2>
-        <p class="hero-text">
-            Professional photography services for weddings, portraits, products, and creative projects.
-        </p>
-        <button onclick="showMessage()">Book Now</button>
-    </div>
+    messages.push(msg);
 
-    <div class="services">
-        <h2 style="text-align:center;">Our Services</h2>
+    localStorage.setItem("messages", JSON.stringify(messages));
 
-        <div class="services-text">
-            <span>Portrait Photography</span>
-            <span>Wedding Photography</span>
-            <span>Product Photography</span>
-        </div>
-    </div>
+    form.reset();
 
-</section>
+    renderMessages();
 
-<!-- ABOUT + TESTIMONIALS -->
-<section id="about" style="padding:80px 20px; text-align:center; background:#111;">
+});
 
-    <h2>About Us</h2>
+/* RENDER MESSAGES */
+function renderMessages(){
 
-    <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
-        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.  
-        Our team works with different types of photography including weddings, portraits, and commercial projects.  
-        We focus on turning simple moments into powerful visual stories that last forever.  
-        Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results for our clients.
-    </p>
+    messagesList.innerHTML = "";
 
-    <hr style="margin:40px auto; width:60%; opacity:0.3;">
+    messages.forEach((msg) => {
 
-    <h3>What Clients Say</h3>
+        const li = document.createElement("li");
 
-    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:20px;">
-        "Amazing photography experience! Very professional and creative work." – Sarah
-    </p>
+        li.style.background = "#222";
+        li.style.margin = "10px 0";
+        li.style.padding = "10px";
+        li.style.borderRadius = "8px";
 
-    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:15px;">
-        "The best studio I have worked with. Excellent quality and service." – Ahmed
-    </p>
+        li.innerHTML = 
+            <strong>${msg.name}</strong><br>
+            ${msg.email}<br>
+            ${msg.message}
+        ;
 
-</section>
+        messagesList.appendChild(li);
 
-<!-- GALLERY -->
-<section id="gallery">
-
-    <h2 style="text-align:center;">Gallery</h2>
-
-    <div class="gallery">
-        <img src="images/img1.jpg">
-        <img src="images/img2.jpg">
-        <img src="images/img3.jpg">
-        <img src="images/img4.jpg">
-    </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-
-    <h2 style="text-align:center;">Contact Us</h2>
-
-    <form>
-        <label>Name:</label>
-        <input type="text" required minlength="3">
-
-        <label>Email:</label>
-        <input type="email" required>
-
-        <label>Message:</label>
-        <textarea required></textarea>
-
-        <button type="submit">Send</button>
-    </form>
-
-</section>
-
-<footer>
-    <p>© 2026 Photo Studio Pro</p>
-</footer>
-
-<script>
-function showMessage(){
-    alert("Booking request sent successfully!");
-}
-
-/* SCROLL REVEAL */
-const sections = document.querySelectorAll("section");
-
-function showSections(){
-    const triggerBottom = window.innerHeight * 0.85;
-
-    sections.forEach(sec => {
-        const sectionTop = sec.getBoundingClientRect().top;
-
-        if(sectionTop < triggerBottom){
-            sec.classList.add("show");
-        }
     });
+
 }
 
-window.addEventListener("scroll", showSections);
-window.addEventListener("load", showSections);
 </script>
 
 </body>
+
 </html>
