@@ -26,7 +26,7 @@ html{
     <a href="#about">About</a>
     <a href="#gallery">Portfolio</a>
     <a href="#contact">Contact</a>
-    <a href="#crud">Users</a>
+    <a href="#users">Users</a>
 </nav>
 
 <!-- HOME -->
@@ -38,16 +38,28 @@ html{
         </p>
         <button onclick="showMessage()">Book Now</button>
     </div>
+
+    <div class="services">
+        <h2 style="text-align:center;">Our Services</h2>
+        <div class="services-text">
+            <span>Portrait Photography</span>
+            <span>Wedding Photography</span>
+            <span>Product Photography</span>
+        </div>
+    </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" style="padding:80px 20px; text-align:center; background:#111;">
     <h2>About Us</h2>
+    <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
+        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
+    </p>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery">
-    <h2>Gallery</h2>
+    <h2 style="text-align:center;">Gallery</h2>
     <div class="gallery">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
@@ -58,20 +70,31 @@ html{
 
 <!-- CONTACT -->
 <section id="contact">
-    <h2>Contact Us</h2>
+    <h2 style="text-align:center;">Contact Us</h2>
+    <form>
+        <label>Name:</label>
+        <input type="text" required>
+
+        <label>Email:</label>
+        <input type="email" required>
+
+        <label>Message:</label>
+        <textarea required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
 </section>
 
-<!-- 🔥 CRUD SECTION (محاضرة 15) -->
-<section id="crud">
-    <h2>Users Management (CRUD)</h2>
+<!-- ⭐ USERS (محاضرة 15) -->
+<section id="users">
+    <h2 style="text-align:center;">Users System (CRUD)</h2>
 
-    <form id="crudForm">
-        <input type="text" id="name" placeholder="Enter name" required>
-        <input type="email" id="email" placeholder="Enter email" required>
-        <button type="submit" id="submitBtn">Add</button>
-    </form>
+    <input type="text" id="name" placeholder="Enter name">
+    <input type="email" id="email" placeholder="Enter email">
 
-    <input type="text" id="search" placeholder="Search by name or email">
+    <button onclick="addUser()">Add User</button>
+
+    <input type="text" id="search" placeholder="Search users...">
 
     <ul id="userList"></ul>
 </section>
@@ -80,6 +103,13 @@ html{
     <p>© 2026 Photo Studio Pro</p>
 </footer>
 
+<script>
+function showMessage(){
+    alert("Booking request sent successfully!");
+}
+</script>
+
 <script src="script.js"></script>
+
 </body>
 </html>
