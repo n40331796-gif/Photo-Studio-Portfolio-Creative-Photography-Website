@@ -9,9 +9,14 @@
 <style>
 html{
     scroll-behavior:smooth;
-    scroll-padding-top:110px;
+}
+
+/* 🔥 الحل الحقيقي للمشكلة */
+section{
+    scroll-margin-top:110px;
 }
 </style>
+
 </head>
 
 <body>
@@ -31,6 +36,7 @@ html{
 
 <!-- HOME -->
 <section id="home">
+
     <div class="hero">
         <h2 class="hero-title">We Create Visual Stories</h2>
         <p class="hero-text">
@@ -47,6 +53,7 @@ html{
             <span>Product Photography</span>
         </div>
     </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -78,6 +85,7 @@ html{
 <!-- GALLERY -->
 <section id="gallery">
     <h2 style="text-align:center;">Gallery</h2>
+
     <div class="gallery">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
@@ -102,6 +110,7 @@ html{
 
         <button type="submit">Send</button>
     </form>
+
 </section>
 
 <footer>
