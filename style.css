@@ -142,34 +142,3 @@ button:hover{
     background:#ff9800;
     transform:scale(1.05);
 }
-@media (max-width: 768px){
-
-    section{
-        min-height:auto;
-        padding:60px 15px;
-    }
-
-    .hero{
-        padding:20px;
-    }
-
-    .services-text{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    nav a{
-        display:inline-block;
-        margin:10px;
-    }
-
-    .gallery img{
-        width:100%;
-        max-width:300px;
-        height:auto;
-    }
-
-    form{
-        width:90%;
-    }
-}
