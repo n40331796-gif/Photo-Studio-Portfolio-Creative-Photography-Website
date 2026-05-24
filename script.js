@@ -1,4 +1,5 @@
 let users = JSON.parse(localStorage.getItem('users')) || [];
+
 let editIndex = null;
 
 const form = document.getElementById('crudForm');
@@ -10,98 +11,121 @@ const submitBtn = document.getElementById('submitBtn');
 
 renderUsers();
 
-// إضافة أو تعديل مستخدم
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+/* ADD OR UPDATE USER */
+form.addEventListener('submit', function(e){
 
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
+    e.preventDefault();
 
-  if (!name || !email) return;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
 
-  const user = { name, email };
+    if(!name || !email){
+        return;
+    }
 
-  if (editIndex === null) {
-    users.push(user);
-  } else {
-    users[editIndex] = user;
-    editIndex = null;
+    const user = {
+        name,
+        email
+    };
 
-    submitBtn.textContent = '➕ Add';
-    submitBtn.classList.remove('update-btn');
-    submitBtn.classList.add('add-btn');
-  }
+    if(editIndex === null){
 
-  nameInput.value = '';
-  emailInput.value = '';
+        users.push(user);
 
-  saveToLocalStorage();
-  renderUsers();
+    }else{
+
+        users[editIndex] = user;
+
+        editIndex = null;
+
+        submitBtn.textContent = "Add";
+    }
+
+    nameInput.value = "";
+    emailInput.value = "";
+
+    saveUsers();
+
+    renderUsers();
+
 });
 
-// البحث
+/* SEARCH */
 searchInput.addEventListener('input', renderUsers);
 
-// عرض المستخدمين
-function renderUsers() {
-  const filter = searchInput.value.toLowerCase();
-  userList.innerHTML = '';
+/* RENDER USERS */
+function renderUsers(){
 
-  users.forEach((user, index) => {
+    const filter = searchInput.value.toLowerCase();
 
-    if (
-      !user.name.toLowerCase().includes(filter) &&
-      !user.email.toLowerCase().includes(filter)
-    ) return;
+    userList.innerHTML = "";
 
-    const li = document.createElement('li');
+    users.forEach((user, index) => {
 
-    const info = document.createElement('span');
-    info.innerHTML = <strong>${user.name}</strong><br>${user.email};
+        if(
+            !user.name.toLowerCase().includes(filter) &&
+            !user.email.toLowerCase().includes(filter)
+        ){
+            return;
+        }
 
-    const actions = document.createElement('div');
-    actions.className = 'actions';
+        const li = document.createElement('li');
 
-    const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
-    editBtn.className = 'edit';
-    editBtn.onclick = () => editUser(index);
+        li.style.background = "#222";
+        li.style.margin = "10px auto";
+        li.style.padding = "15px";
+        li.style.borderRadius = "10px";
+        li.style.maxWidth = "500px";
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'delete';
-    deleteBtn.onclick = () => deleteUser(index);
+        li.innerHTML = 
+            <strong>${user.name}</strong><br>
+            ${user.email}
+            <br><br>
 
-    actions.appendChild(editBtn);
-    actions.appendChild(deleteBtn);
+            <button onclick="editUser(${index})">
+                Edit
+            </button>
 
-    li.appendChild(info);
-    li.appendChild(actions);
+            <button onclick="deleteUser(${index})">
+                Delete
+            </button>
+        ;
 
-    userList.appendChild(li);
-  });
+        userList.appendChild(li);
+
+    });
+
 }
 
-// تعديل مستخدم
-function editUser(index) {
-  nameInput.value = users[index].name;
-  emailInput.value = users[index].email;
+/* EDIT USER */
+function editUser(index){
 
-  editIndex = index;
+    nameInput.value = users[index].name;
+    emailInput.value = users[index].email;
 
-  submitBtn.textContent = '🔄 Update';
-  submitBtn.classList.remove('add-btn');
-  submitBtn.classList.add('update-btn');
+    editIndex = index;
+
+    submitBtn.textContent = "Update";
+
 }
 
-// حذف مستخدم
-function deleteUser(index) {
-  users.splice(index, 1);
-  saveToLocalStorage();
-  renderUsers();
+/* DELETE USER */
+function deleteUser(index){
+
+    users.splice(index, 1);
+
+    saveUsers();
+
+    renderUsers();
+
 }
 
-// حفظ البيانات
-function saveToLocalStorage() {
-  localStorage.setItem('users', JSON.stringify(users));
+/* SAVE TO LOCAL STORAGE */
+function saveUsers(){
+
+    localStorage.setItem(
+        'users',
+        JSON.stringify(users)
+    );
+
 }
