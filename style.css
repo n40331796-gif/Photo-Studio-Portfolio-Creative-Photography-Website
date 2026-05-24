@@ -48,14 +48,16 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTION (IMPORTANT FIX FINAL) */
+/* SECTION (FIX SCROLL OVERLAP ISSUE) */
 section{
-    min-height:auto;   /* إزالة الفراغات الكبيرة */
-    padding:50px 20px;
+    min-height:auto;
+    padding:60px 20px;
     box-sizing:border-box;
-    scroll-margin-top:80px;
 
-    /* مهم: إزالة أي مشاكل ظهور/اختفاء */
+    /* 🔥 الحل الحقيقي للمشكلة */
+    scroll-margin-top:100px;
+
+    /* تثبيت العرض بدون أخطاء */
     opacity:1;
     transform:none;
 }
@@ -153,7 +155,8 @@ button:hover{
     }
 
     section{
-        padding:25px 15px;
+        padding:30px 15px;
+        scroll-margin-top:90px;
     }
 
     .hero{
