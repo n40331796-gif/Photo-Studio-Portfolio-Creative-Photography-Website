@@ -1,63 +1,85 @@
-const form = document.getElementById("contactForm");
-const messagesList = document.getElementById("messagesList");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Photo Studio Pro</title>
+<link rel="stylesheet" href="style.css">
 
-renderMessages();
-
-/* SUBMIT FORM */
-form.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const name = form.querySelector("input[type='text']").value.trim();
-    const email = form.querySelector("input[type='email']").value.trim();
-    const message = form.querySelector("textarea").value.trim();
-
-    if(!name  !email  !message) return;
-
-    const msg = {
-        name: name,
-        email: email,
-        message: message
-    };
-
-    messages.push(msg);
-
-    localStorage.setItem("messages", JSON.stringify(messages));
-
-    form.reset();
-
-    renderMessages();
-
-});
-
-/* RENDER MESSAGES */
-function renderMessages(){
-
-    messagesList.innerHTML = "";
-
-    messages.forEach((msg) => {
-
-        const li = document.createElement("li");
-
-        li.style.background = "#222";
-        li.style.margin = "10px 0";
-        li.style.padding = "10px";
-        li.style.borderRadius = "8px";
-
-        li.innerHTML = 
-            <strong>${msg.name}</strong><br>
-            ${msg.email}<br>
-            ${msg.message}
-        ;
-
-        messagesList.appendChild(li);
-
-    });
-
+<style>
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:80px;
 }
+</style>
+</head>
 
-</script>
+<body>
 
+<header class="header">
+    <img src="images/logo.png" class="logo-img">
+    <h1 class="logo">Photo Studio Pro</h1>
+    <p class="tagline">Capturing Moments with Creativity</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="#crud">Users</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <div class="hero">
+        <h2 class="hero-title">We Create Visual Stories</h2>
+        <p class="hero-text">
+            Professional photography services for weddings, portraits, products, and creative projects.
+        </p>
+        <button onclick="showMessage()">Book Now</button>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Us</h2>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="images/img1.jpg">
+        <img src="images/img2.jpg">
+        <img src="images/img3.jpg">
+        <img src="images/img4.jpg">
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact Us</h2>
+</section>
+
+<!-- 🔥 CRUD SECTION (محاضرة 15) -->
+<section id="crud">
+    <h2>Users Management (CRUD)</h2>
+
+    <form id="crudForm">
+        <input type="text" id="name" placeholder="Enter name" required>
+        <input type="email" id="email" placeholder="Enter email" required>
+        <button type="submit" id="submitBtn">Add</button>
+    </form>
+
+    <input type="text" id="search" placeholder="Search by name or email">
+
+    <ul id="userList"></ul>
+</section>
+
+<footer>
+    <p>© 2026 Photo Studio Pro</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
-
 </html>
