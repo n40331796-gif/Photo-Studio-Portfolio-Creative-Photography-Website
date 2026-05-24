@@ -24,8 +24,8 @@ form.addEventListener('submit', function(e){
     }
 
     const user = {
-        name,
-        email
+        name: name,
+        email: email
     };
 
     if(editIndex === null){
@@ -71,24 +71,12 @@ function renderUsers(){
 
         const li = document.createElement('li');
 
-        li.style.background = "#222";
-        li.style.margin = "10px auto";
-        li.style.padding = "15px";
-        li.style.borderRadius = "10px";
-        li.style.maxWidth = "500px";
-
         li.innerHTML = 
             <strong>${user.name}</strong><br>
             ${user.email}
             <br><br>
-
-            <button onclick="editUser(${index})">
-                Edit
-            </button>
-
-            <button onclick="deleteUser(${index})">
-                Delete
-            </button>
+            <button onclick="editUser(${index})">Edit</button>
+            <button onclick="deleteUser(${index})">Delete</button>
         ;
 
         userList.appendChild(li);
@@ -120,12 +108,9 @@ function deleteUser(index){
 
 }
 
-/* SAVE TO LOCAL STORAGE */
+/* SAVE */
 function saveUsers(){
 
-    localStorage.setItem(
-        'users',
-        JSON.stringify(users)
-    );
+    localStorage.setItem('users', JSON.stringify(users));
 
 }
