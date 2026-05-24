@@ -1,8 +1,13 @@
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     font-family:Arial;
     background:#111;
     color:white;
+    overflow-x:hidden;
 }
 
 /* HEADER */
@@ -48,21 +53,14 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTIONS (SCROLL ANIMATION) */
+/* SECTIONS */
 section{
-    min-height:100vh;
-    padding:100px 20px;
+    min-height:auto;
+    padding:60px 20px;
     box-sizing:border-box;
-
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s ease;
-}
-
-/* عندما يظهر القسم */
-section.show{
+    scroll-margin-top:110px;
     opacity:1;
-    transform:translateY(0);
+    transform:none;
 }
 
 /* HERO */
@@ -73,7 +71,7 @@ section.show{
     border-radius:10px;
 }
 
-/* SERVICES TEXT */
+/* SERVICES */
 .services-text{
     display:flex;
     justify-content:center;
@@ -90,6 +88,19 @@ section.show{
 
 .services-text span:hover{
     color:orange;
+}
+
+/* ABOUT FIX (IMPORTANT FOR LAPTOP + MOBILE) */
+#about{
+    padding:80px 20px;
+    text-align:center;
+    background:#111;
+}
+
+#about p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
 }
 
 /* GALLERY */
@@ -141,4 +152,54 @@ button{
 button:hover{
     background:#ff9800;
     transform:scale(1.05);
+}
+
+/* MOBILE FIX */
+@media (max-width:768px){
+
+    nav{
+        padding:10px;
+    }
+
+    nav a{
+        display:block;
+        margin:8px 0;
+        font-size:16px;
+    }
+
+    section{
+        padding:30px 15px;
+    }
+
+    .hero{
+        padding:20px;
+    }
+
+    .hero-title{
+        font-size:28px;
+    }
+
+    .hero-text{
+        font-size:16px;
+    }
+
+    .services-text{
+        flex-direction:column;
+        align-items:center;
+        gap:10px;
+    }
+
+    .gallery{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .gallery img{
+        width:90%;
+        height:auto;
+    }
+
+    form{
+        width:90%;
+    }
 }
