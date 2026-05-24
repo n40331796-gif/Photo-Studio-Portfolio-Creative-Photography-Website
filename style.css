@@ -35,9 +35,9 @@ nav{
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* LINKS */
 nav a{
     color:white;
     text-decoration:none;
@@ -45,6 +45,7 @@ nav a{
     font-size:18px;
     padding:5px 10px;
     border-radius:5px;
+    transition:0.3s;
 }
 
 nav a:hover{
@@ -52,15 +53,14 @@ nav a:hover{
     background:#333;
 }
 
-/* 🔥 الحل الحقيقي لمشكلة الانتقال بين الأقسام */
-html{
-    scroll-behavior:smooth;
-    scroll-padding-top:100px;
-}
-
+/* SECTIONS */
 section{
-    scroll-margin-top:100px;
+    min-height:auto;
     padding:60px 20px;
+    box-sizing:border-box;
+    scroll-margin-top:110px;
+    opacity:1;
+    transform:none;
 }
 
 /* HERO */
@@ -76,13 +76,31 @@ section{
     display:flex;
     justify-content:center;
     gap:60px;
+    margin-top:20px;
     flex-wrap:wrap;
     font-size:18px;
-    margin-top:20px;
+}
+
+.services-text span{
+    color:white;
+    transition:0.3s;
 }
 
 .services-text span:hover{
     color:orange;
+}
+
+/* ABOUT FIX (IMPORTANT FOR LAPTOP + MOBILE) */
+#about{
+    padding:80px 20px;
+    text-align:center;
+    background:#111;
+}
+
+#about p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
 }
 
 /* GALLERY */
@@ -99,6 +117,7 @@ section{
     object-fit:cover;
     border-radius:10px;
     transition:0.3s;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .gallery img:hover{
@@ -127,30 +146,20 @@ button{
     border:none;
     cursor:pointer;
     border-radius:5px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#ff9800;
+    transform:scale(1.05);
 }
 
-/* ABOUT FIX (CENTER ONLY) */
-#about{
-    text-align:center;
-}
-
-#about h2,
-#about h3{
-    text-align:center;
-}
-
-#about p{
-    max-width:900px;
-    margin:20px auto;
-    line-height:1.8;
-}
-
-/* MOBILE */
+/* MOBILE FIX */
 @media (max-width:768px){
+
+    nav{
+        padding:10px;
+    }
 
     nav a{
         display:block;
@@ -160,6 +169,18 @@ button:hover{
 
     section{
         padding:30px 15px;
+    }
+
+    .hero{
+        padding:20px;
+    }
+
+    .hero-title{
+        font-size:28px;
+    }
+
+    .hero-text{
+        font-size:16px;
     }
 
     .services-text{
