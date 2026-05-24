@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <title>Photo Studio Pro</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
 html{
     scroll-behavior:smooth;
-    scroll-padding-top:80px;
+    scroll-padding-top:90px;
+}
+
+/* FIX SCROLL ANIMATION */
+section{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:none;
 }
 </style>
 </head>
@@ -31,7 +43,6 @@ html{
 
 <!-- HOME -->
 <section id="home">
-
     <div class="hero">
         <h2 class="hero-title">We Create Visual Stories</h2>
         <p class="hero-text">
@@ -42,61 +53,38 @@ html{
 
     <div class="services">
         <h2 style="text-align:center;">Our Services</h2>
-
         <div class="services-text">
             <span>Portrait Photography</span>
             <span>Wedding Photography</span>
             <span>Product Photography</span>
         </div>
     </div>
-
 </section>
 
-<!-- ABOUT + TESTIMONIALS -->
-<section id="about" style="padding:80px 20px; text-align:center; background:#111;">
-
-    <h2>About Us</h2>
-
-    <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
-        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.  
-        Our team works with different types of photography including weddings, portraits, and commercial projects.  
-        We focus on turning simple moments into powerful visual stories that last forever.  
-        Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results for our clients.
+<!-- ABOUT -->
+<section id="about">
+    <h2 style="text-align:center;">About Us</h2>
+    <p style="max-width:750px;margin:auto;line-height:1.8;margin-top:20px;">
+        We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
     </p>
 
-    <hr style="margin:40px auto; width:60%; opacity:0.3;">
-
-    <h3>What Clients Say</h3>
-
-    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:20px;">
-        "Amazing photography experience! Very professional and creative work." – Sarah
-    </p>
-
-    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:15px;">
-        "The best studio I have worked with. Excellent quality and service." – Ahmed
-    </p>
-
+    <h3 style="text-align:center;margin-top:40px;">What Clients Say</h3>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery">
-
     <h2 style="text-align:center;">Gallery</h2>
-
     <div class="gallery">
         <img src="images/img1.jpg">
         <img src="images/img2.jpg">
         <img src="images/img3.jpg">
         <img src="images/img4.jpg">
     </div>
-
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-
     <h2 style="text-align:center;">Contact Us</h2>
-
     <form>
         <label>Name:</label>
         <input type="text" required minlength="3">
@@ -109,7 +97,6 @@ html{
 
         <button type="submit">Send</button>
     </form>
-
 </section>
 
 <footer>
@@ -121,7 +108,7 @@ function showMessage(){
     alert("Booking request sent successfully!");
 }
 
-/* SCROLL REVEAL */
+/* FIX SCROLL REVEAL */
 const sections = document.querySelectorAll("section");
 
 function showSections(){
