@@ -1,47 +1,93 @@
-// ====== OBJECT EXAMPLE ======
-const studio = {
-  name: "Photo Studio Pro",
-  services: ["Wedding", "Portrait", "Product"],
-  location: "Libya",
-  showInfo: function () {
-    console.log(Studio: ${this.name});
-  }
-};
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let editIndex = null;
 
-studio.showInfo();
+const form = document.getElementById("crudForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const searchInput = document.getElementById("search");
+const userList = document.getElementById("userList");
+const submitBtn = document.getElementById("submitBtn");
 
+// عرض أولي
+renderUsers();
 
-// ====== DOM MANIPULATION ======
-const title = document.querySelector(".logo");
+// إضافة / تعديل
+form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-title.addEventListener("click", function () {
-  this.style.color = "orange";
-  this.innerHTML = "✨ Clicked Studio ✨";
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if(!name || !email) return;
+
+    const user = {name, email};
+
+    if(editIndex === null){
+        users.push(user);
+    } else {
+        users[editIndex] = user;
+        editIndex = null;
+    }
+
+    save();
+    renderUsers();
+
+    form.reset();
 });
 
+// بحث
+searchInput.addEventListener("input", renderUsers);
 
-// ====== NESTED OBJECT ======
-const client = {
-  name: "Ahmed",
-  contact: {
-    email: "ahmed@gmail.com",
-    phone: "123456"
-  }
-};
+// عرض
+function renderUsers(){
+    const filter = searchInput.value.toLowerCase();
 
-console.log(client.contact.email);
+    userList.innerHTML = "";
 
+    users.forEach((user, index) => {
 
-// ====== LOCAL STORAGE ======
-localStorage.setItem("studioName", "Photo Studio Pro");
+        if(
+            !user.name.toLowerCase().includes(filter) &&
+            !user.email.toLowerCase().includes(filter)
+        ) return;
 
-const savedName = localStorage.getItem("studioName");
-console.log("Saved:", savedName);
+        const li = document.createElement("li");
 
+        li.innerHTML = 
+            <span>
+                <strong>${user.name}</strong><br>
+                ${user.email}
+            </span>
+            <div>
+                <button onclick="editUser(${index})">Edit</button>
+                <button onclick="deleteUser(${index})">Delete</button>
+            </div>
+        ;
 
-// ====== innerHTML EXAMPLE ======
-const heroText = document.querySelector(".hero-text");
+        userList.appendChild(li);
+    });
+}
 
-if (heroText) {
-  heroText.innerHTML += "<br><strong>Now powered with JavaScript 🚀</strong>";
+// تعديل
+function editUser(index){
+    nameInput.value = users[index].name;
+    emailInput.value = users[index].email;
+    editIndex = index;
+}
+
+// حذف
+function deleteUser(index){
+    users.splice(index,1);
+    save();
+    renderUsers();
+}
+
+// حفظ
+function save(){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+// زر تجربة
+function showMessage(){
+    alert("Booking request sent!");
 }
