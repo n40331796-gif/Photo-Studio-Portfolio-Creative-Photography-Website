@@ -11,9 +11,16 @@ html{
     scroll-behavior:smooth;
 }
 
+/* 🔥 الحل الصحيح */
 section{
-    padding-top:120px;
-    margin-top:-120px;
+    scroll-margin-top:90px;
+}
+
+/* منع تغطية النافبار */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 </style>
 
@@ -62,7 +69,6 @@ section{
     <h2>About Us</h2>
 
     <div style="max-width:900px; margin:auto; line-height:1.8; font-size:18px;">
-
         <p>
             We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
             Our team works with different types of photography including weddings, portraits, and commercial projects.
@@ -72,7 +78,6 @@ section{
             We focus on turning simple moments into powerful visual stories that last forever.
             Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results.
         </p>
-
     </div>
 
     <hr style="margin:50px auto; width:60%; opacity:0.3;">
@@ -80,11 +85,8 @@ section{
     <h3>What Clients Say</h3>
 
     <div style="max-width:800px; margin:auto; line-height:1.6;">
-
         <p>"Amazing photography experience! Very professional and creative work." – Sarah</p>
-
         <p>"The best studio I have worked with. Excellent quality and service." – Ahmed</p>
-
     </div>
 
 </section>
