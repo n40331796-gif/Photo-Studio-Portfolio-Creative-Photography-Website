@@ -6,10 +6,14 @@ const emailInput = document.getElementById("email");
 const searchInput = document.getElementById("search");
 const userList = document.getElementById("userList");
 
+// تشغيل أولي
+render();
+
+// إضافة أو تعديل
 function addUser(){
 
-    let name = nameInput.value;
-    let email = emailInput.value;
+    let name = nameInput.value.trim();
+    let email = emailInput.value.trim();
 
     if(name === "" || email === "") return;
 
@@ -27,6 +31,7 @@ function addUser(){
     render();
 }
 
+// عرض
 function render(){
 
     userList.innerHTML = "";
@@ -35,13 +40,15 @@ function render(){
 
     users.forEach((u,i)=>{
 
-        if(!u.name.toLowerCase().includes(filter) &&
-           !u.email.toLowerCase().includes(filter)) return;
+        if(
+            !u.name.toLowerCase().includes(filter) &&
+            !u.email.toLowerCase().includes(filter)
+        ) return;
 
         let li = document.createElement("li");
 
         li.innerHTML = 
-            ${u.name} - ${u.email}
+            <b>${u.name}</b> - ${u.email}
             <button onclick="editUser(${i})">Edit</button>
             <button onclick="deleteUser(${i})">Delete</button>
         ;
@@ -50,22 +57,24 @@ function render(){
     });
 }
 
+// تعديل
 function editUser(i){
     nameInput.value = users[i].name;
     emailInput.value = users[i].email;
     editIndex = i;
 }
 
+// حذف
 function deleteUser(i){
     users.splice(i,1);
     save();
     render();
 }
 
+// حفظ
 function save(){
     localStorage.setItem("users", JSON.stringify(users));
 }
 
+// بحث مباشر
 searchInput.addEventListener("input", render);
-
-render();
