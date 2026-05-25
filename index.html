@@ -123,7 +123,7 @@ function showMessage(){
     alert("Booking request sent successfully!");
 }
 
-/* SCROLL REVEAL */
+/* SCROLL */
 const sections = document.querySelectorAll("section");
 
 function showSections(){
@@ -131,7 +131,6 @@ function showSections(){
 
     sections.forEach(sec => {
         const sectionTop = sec.getBoundingClientRect().top;
-
         if(sectionTop < triggerBottom){
             sec.classList.add("show");
         }
@@ -140,6 +139,29 @@ function showSections(){
 
 window.addEventListener("scroll", showSections);
 window.addEventListener("load", showSections);
+
+
+/* =========================
+   USERS SYSTEM (محاضرة 15)
+========================= */
+
+let users = [];
+
+function addUser() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const list = document.getElementById("userList");
+
+    if (!name || !email) return;
+
+    const li = document.createElement("li");
+    li.innerHTML = <strong>${name}</strong><br>${email};
+
+    list.appendChild(li);
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+}
 </script>
 
 </body>
