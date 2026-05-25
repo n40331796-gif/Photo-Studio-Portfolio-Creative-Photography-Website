@@ -11,6 +11,7 @@ html{
     scroll-padding-top:80px;
 }
 </style>
+
 </head>
 
 <body>
@@ -55,6 +56,18 @@ html{
     <p style="max-width:750px; margin:auto; line-height:1.8; margin-top:20px;">
         We are a professional photography studio dedicated to capturing high-quality moments with creativity and passion.
         Our team works with different types of photography including weddings, portraits, and commercial projects.
+        We focus on turning simple moments into powerful visual stories that last forever.
+        Every project we take is treated with care, attention to detail, and artistic vision to ensure the best results for our clients.
+    </p>
+
+    <hr style="margin:40px auto; width:60%; opacity:0.3;">
+
+    <h3>What Clients Say</h3>
+    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:20px;">
+        "Amazing photography experience! Very professional and creative work." – Sarah
+    </p>
+    <p style="max-width:650px; margin:auto; line-height:1.6; margin-top:15px;">
+        "The best studio I have worked with. Excellent quality and service." – Ahmed
     </p>
 </section>
 
@@ -72,6 +85,7 @@ html{
 <!-- CONTACT -->
 <section id="contact">
     <h2 style="text-align:center;">Contact Us</h2>
+
     <form>
         <label>Name:</label>
         <input type="text" required minlength="3">
@@ -86,7 +100,7 @@ html{
     </form>
 </section>
 
-<!-- USERS SYSTEM -->
+<!-- ⭐ USERS SYSTEM (محاضرة 15) -->
 <section id="users">
     <h2 style="text-align:center;">Users System (CRUD)</h2>
 
@@ -105,30 +119,27 @@ html{
 </footer>
 
 <script>
-let users = [];
-
-window.addUser = function () {
-
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const list = document.getElementById("userList");
-
-    // ✅ FIXED CONDITION
-    if (!name  !email  !list) return;
-    if (!name.value || !email.value) return;
-
-    const li = document.createElement("li");
-    li.innerHTML = "<strong>" + name.value + "</strong><br>" + email.value;
-
-    list.appendChild(li);
-
-    name.value = "";
-    email.value = "";
-};
-
 function showMessage(){
     alert("Booking request sent successfully!");
 }
+
+/* SCROLL REVEAL */
+const sections = document.querySelectorAll("section");
+
+function showSections(){
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(sec => {
+        const sectionTop = sec.getBoundingClientRect().top;
+
+        if(sectionTop < triggerBottom){
+            sec.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", showSections);
+window.addEventListener("load", showSections);
 </script>
 
 </body>
