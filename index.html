@@ -123,53 +123,21 @@ function showMessage(){
     alert("Booking request sent successfully!");
 }
 
-/* ===== SCROLL SAFE VERSION ===== */
-window.addEventListener("load", () => {
-    const sections = document.querySelectorAll("section");
-
-    function showSections(){
-        const triggerBottom = window.innerHeight * 0.85;
-
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-
-            if(top < triggerBottom){
-                sec.classList.add("show");
-            }
-        });
-    }
-
-    window.addEventListener("scroll", showSections);
-    showSections();
-});
-
-
-/* ===== USERS SYSTEM SAFE ===== */
-
-function addUser() {
-    const nameEl = document.getElementById("name");
-    const emailEl = document.getElementById("email");
+window.addUser = function () {
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
     const list = document.getElementById("userList");
 
-    if (!nameEl  !emailEl  !list) {
-        alert("Missing elements in HTML");
-        return;
-    }
-
-    const name = nameEl.value.trim();
-    const email = emailEl.value.trim();
-
-    if (!name || !email) return;
+    if (!name.value || !email.value) return;
 
     const li = document.createElement("li");
-    li.style.margin = "10px 0";
-    li.innerHTML = "<strong>" + name + "</strong><br>" + email;
+    li.innerHTML = name.value + " - " + email.value;
 
     list.appendChild(li);
 
-    nameEl.value = "";
-    emailEl.value = "";
-}
+    name.value = "";
+    email.value = "";
+};
 </script>
 
 </body>
