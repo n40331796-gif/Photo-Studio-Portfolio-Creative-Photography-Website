@@ -123,44 +123,52 @@ function showMessage(){
     alert("Booking request sent successfully!");
 }
 
-/* SCROLL */
-const sections = document.querySelectorAll("section");
+/* ===== SCROLL SAFE VERSION ===== */
+window.addEventListener("load", () => {
+    const sections = document.querySelectorAll("section");
 
-function showSections(){
-    const triggerBottom = window.innerHeight * 0.85;
+    function showSections(){
+        const triggerBottom = window.innerHeight * 0.85;
 
-    sections.forEach(sec => {
-        const sectionTop = sec.getBoundingClientRect().top;
-        if(sectionTop < triggerBottom){
-            sec.classList.add("show");
-        }
-    });
-}
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
 
-window.addEventListener("scroll", showSections);
-window.addEventListener("load", showSections);
+            if(top < triggerBottom){
+                sec.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", showSections);
+    showSections();
+});
 
 
-/* =========================
-   USERS SYSTEM (محاضرة 15)
-========================= */
-
-let users = [];
+/* ===== USERS SYSTEM SAFE ===== */
 
 function addUser() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
+    const nameEl = document.getElementById("name");
+    const emailEl = document.getElementById("email");
     const list = document.getElementById("userList");
+
+    if (!nameEl  !emailEl  !list) {
+        alert("Missing elements in HTML");
+        return;
+    }
+
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
 
     if (!name || !email) return;
 
     const li = document.createElement("li");
-    li.innerHTML = <strong>${name}</strong><br>${email};
+    li.style.margin = "10px 0";
+    li.innerHTML = "<strong>" + name + "</strong><br>" + email;
 
     list.appendChild(li);
 
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
+    nameEl.value = "";
+    emailEl.value = "";
 }
 </script>
 
