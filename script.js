@@ -86,3 +86,27 @@ function editUser(index) {
 searchInput.addEventListener("input", render);
 
 render();
+
+let users = [];
+
+window.addUser = function () {
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const list = document.getElementById("userList");
+
+    if (!name  !email  !list) {
+        console.log("Missing elements");
+        return;
+    }
+
+    if (!name.value || !email.value) return;
+
+    const li = document.createElement("li");
+    li.style.margin = "8px 0";
+    li.innerHTML = "<strong>" + name.value + "</strong><br>" + email.value;
+
+    list.appendChild(li);
+
+    name.value = "";
+    email.value = "";
+};
