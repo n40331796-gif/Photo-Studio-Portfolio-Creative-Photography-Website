@@ -53,8 +53,8 @@ section{
     min-height:100vh;
     padding:100px 20px;
     box-sizing:border-box;
-   opacity:1 !important;
-    transform:none !important;
+    opacity:0;
+    transform:translateY(40px);
     transition:all 0.8s ease;
 }
 
