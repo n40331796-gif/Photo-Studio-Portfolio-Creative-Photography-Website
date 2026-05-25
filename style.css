@@ -48,7 +48,7 @@ nav a:hover{
     background:#333;
 }
 
-/* SECTIONS */
+/* SECTIONS (SCROLL ANIMATION) */
 section{
     min-height:100vh;
     padding:100px 20px;
@@ -58,6 +58,7 @@ section{
     transition:all 0.8s ease;
 }
 
+/* عندما يظهر القسم */
 section.show{
     opacity:1;
     transform:translateY(0);
@@ -71,7 +72,7 @@ section.show{
     border-radius:10px;
 }
 
-/* SERVICES */
+/* SERVICES TEXT */
 .services-text{
     display:flex;
     justify-content:center;
@@ -141,44 +142,11 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* ⭐ USERS SYSTEM (NEW) */
-#users{
-    text-align:center;
-}
-
-#users input{
-    padding:10px;
-    margin:5px;
-    border-radius:5px;
-    border:none;
-    width:200px;
-}
-
-#userList{
-    list-style:none;
-    padding:0;
-    margin-top:20px;
-}
-
-#userList li{
-    background:#222;
-    margin:10px auto;
-    padding:10px;
-    width:60%;
-    border-radius:5px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-#userList button{
-    padding:5px 10px;
-    margin-left:5px;
-    font-size:12px;
-}
-
-/* RESPONSIVE */
+/* ========================= */
+/* 📱 RESPONSIVE MOBILE FIX */
+/* ========================= */
 @media (max-width:768px){
+
     nav{
         padding:10px;
     }
