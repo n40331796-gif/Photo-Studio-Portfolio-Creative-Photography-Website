@@ -53,10 +53,11 @@ section{
     min-height:100vh;
     padding:100px 20px;
     box-sizing:border-box;
-    opacity:0;
-    transform:translateY(40px);
+    opacity:1;
+    transform:translateY(0);
     transition:all 0.8s ease;
 }
+
 
 /* عندما يظهر القسم */
 section.show{
@@ -140,51 +141,4 @@ button{
 button:hover{
     background:#ff9800;
     transform:scale(1.05);
-}
-
-/* ========================= */
-/* 📱 RESPONSIVE MOBILE FIX */
-/* ========================= */
-@media (max-width:768px){
-
-    nav{
-        padding:10px;
-    }
-
-    nav a{
-        display:block;
-        margin:8px 0;
-        font-size:16px;
-    }
-
-    section{
-        min-height:auto;
-        padding:60px 15px;
-        opacity:1;
-        transform:none;
-    }
-
-    .hero{
-        padding:20px;
-    }
-
-    .services-text{
-        flex-direction:column;
-        align-items:center;
-        gap:10px;
-    }
-
-    .gallery{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .gallery img{
-        width:90%;
-        height:auto;
-    }
-
-    form{
-        width:90%;
-    }
 }
