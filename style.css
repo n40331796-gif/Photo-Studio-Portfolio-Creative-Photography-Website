@@ -53,17 +53,8 @@ section{
     min-height:100vh;
     padding:100px 20px;
     box-sizing:border-box;
-    opacity:1;
-    transform:translateY(0);
-    transition:all 0.8s ease;
 }
 
-
-/* عندما يظهر القسم */
-section.show{
-    opacity:1;
-    transform:translateY(0);
-}
 
 /* HERO */
 .hero{
